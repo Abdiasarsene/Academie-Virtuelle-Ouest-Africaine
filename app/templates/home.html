@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{# Page d'accueil = assemblage de sections. Chaque section vit dans templates/sections/. #}
+{% block content %}
+  {% include "sections/_hero.html" %}
+  {% include "sections/_catalogue.html" %}
+  {% include "sections/_methode.html" %}
+  {% include "sections/_quiz.html" %}
+{% endblock %}

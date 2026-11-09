@@ -1,0 +1,26 @@
+<header class="site-header">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="{{ url_for('main.index') }}" aria-label="{{ site.nom }} – accueil">
+        <img src="{{ url_for('static', filename='img/logo-academie.jpeg') }}"
+             alt="{{ site.nom }}" class="logo" width="100" height="53">
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#menu" aria-controls="menu" aria-expanded="false"
+              aria-label="Ouvrir le menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-lg-end" id="menu">
+        <ul class="navbar-nav gap-lg-4">
+          {% for lien in nav %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('main.index') }}#{{ lien.ancre }}">{{ lien.label }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

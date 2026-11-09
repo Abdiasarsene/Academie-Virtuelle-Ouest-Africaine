@@ -1,0 +1,197 @@
+/* =========================================================
+   Académie Virtuelle Ouest-Africaine – feuille de style
+   Plan du fichier :
+     1. Variables (couleurs, polices)      5. Section « Une »
+     2. Base                                6. Catalogue
+     3. Bandeau + navigation                7. Méthode
+     4. Hero                                8. Quiz
+                                            9. Pied de page
+   ========================================================= */
+
+/* 1. VARIABLES ---------------------------------------------------------
+   Couleurs relevées dans le PDF et dans le logo. */
+:root {
+  --navy:       #172b43;  /* texte et titres (PDF) */
+  --navy-logo:  #002060;  /* bleu du logo */
+  --gold:       #a77b2c;  /* accent « Votre certification. » (PDF) */
+  --gold-dark:  #755a21;  /* petits textes dorés, plus lisibles (PDF) */
+  --gold-logo:  #c8a040;  /* or du logo */
+  --sand:       #e8e0cf;  /* ombre de la carte à la une (PDF) */
+  --sand-light: #f0eadf;
+  --cream:      #fbf8f4;  /* fond du logo (PDF) */
+  --line:       #e1e3e5;  /* filets et bordures (PDF) */
+  --muted:      #55657a;  /* texte secondaire, contraste AA sur blanc */
+
+  --font-title: Georgia, "Times New Roman", serif;   /* titres (PDF) */
+  --font-body:  Arial, Helvetica, sans-serif;        /* texte (PDF) */
+}
+
+/* 2. BASE --------------------------------------------------------------- */
+html { scroll-behavior: smooth; scroll-padding-top: 110px; }
+body {
+  font-family: var(--font-body);
+  color: var(--navy);
+  background: #fcf9f4;
+  line-height: 1.6;
+}
+h1, h2, h3 { font-family: var(--font-title); font-weight: 400; line-height: 1.15; }
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 3px solid var(--gold-logo);
+  outline-offset: 3px;
+}
+.skip-link { position: absolute; z-index: 2000; background: #fff; padding: .5rem 1rem; }
+
+.eyebrow {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 1.25rem;
+}
+.text-gold { color: var(--gold); }
+.mention { font-size: .85rem; color: var(--muted); }
+
+/* Boutons : lien en gras (« Découvrir… → ») et bouton contour (« Essayer un quiz ») */
+.btn-lien {
+  font-weight: 700; color: var(--navy); border: 0; background: none;
+  padding-left: 0; padding-right: 0; text-align: left;
+}
+.btn-lien:hover { color: var(--gold); }
+.btn-contour {
+  font-weight: 700; color: var(--navy);
+  border: 1px solid var(--line); border-radius: 4px;
+  padding: .8rem 1.5rem; background: #fff;
+}
+.btn-contour:hover { border-color: var(--navy); color: var(--navy); }
+
+/* 3. BANDEAU + NAVIGATION ------------------------------------------------ */
+
+.site-header {
+  position: sticky; top: 0; z-index: 1030;
+  background: #fcf9f4; border-bottom: 1px solid var(--line);
+}
+.logo { width: 500px; height: auto; display:block; }
+.navbar-toggler { border-color: var(--line); }
+.navbar .nav-link {
+  color: var(--navy); font-weight: 700; font-size: .75rem; padding: .75rem 0;
+}
+.navbar .nav-link:hover { color: var(--gold); }
+
+@media (min-width: 992px) {
+  .logo { width: 260px; }
+}
+
+/* 4. HERO --------------------------------------------------------------- */
+.hero { padding: 3.5rem 0 4rem; }
+.display-title {
+  font-size: 3.5em;
+  letter-spacing: -.01em;
+  margin-bottom: 1.5rem;
+}
+.lead-text { font-size: 1.05rem; max-width: 34rem; }
+.chiffres { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--line); }
+.chiffre-titre { font-weight: 700; margin-bottom: .15rem; }
+.chiffre-texte { font-size: .9rem; color: var(--muted); margin: 0; }
+
+/* 5. CARTE « PARCOURS À LA UNE » ---------------------------------------- */
+.une {
+  background: #092b58;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 2rem 1.75rem;
+  box-shadow: 14px 14px 0 var(--sand);   /* décalage beige du PDF */
+  margin-right: 14px; margin-bottom: 14px;
+}
+.une-titre { font-size: 1.9rem; color: #fff; margin-bottom: 1rem; }
+.une-texte { color: #fff; }
+.etapes-liste { list-style: none; padding: 0; margin: 1.5rem 0; }
+.etapes-liste li { padding: .45rem 0; font-size: .95rem; }
+.etapes-liste .num {
+  font-size: .72rem; font-weight: 700; color: var(--gold);
+  margin-right: .9rem;
+}
+
+/* 6. CATALOGUE ---------------------------------------------------------- */
+.section { padding: 4.5rem 0; }
+.section-title { font-size: clamp(1.9rem, 4.5vw, 2.8rem); }
+.section-intro { color: var(--muted); max-width: 32rem; }
+
+.filtres { display: flex; flex-wrap: wrap; gap: .75rem; margin-bottom: 2rem; }
+.filtre {
+  background: #fff; color: var(--navy);
+  border: 1px solid var(--line); border-radius: 999px;
+  padding: .5rem 1.15rem; font-size: .9rem;
+  transition: border-color .15s, background-color .15s;
+}
+.filtre:hover { border-color: var(--navy); }
+.filtre.actif { border-color: var(--navy); font-weight: 700; }
+
+.carte {
+  height: 100%; display: flex; flex-direction: column;
+  background: #fff; border: 1px solid var(--line); border-radius: 6px;
+  padding: 1.75rem;
+}
+.carte-haut {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 2.25rem;
+}
+.domaine {
+  font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--navy);
+}
+.icone { font-size: 1.6rem; color: var(--navy-logo); line-height: 1; }
+.carte-titre { font-family: var(--font-body); font-weight: 700; font-size: 1.2rem; }
+.carte-texte { font-size: .93rem; color: var(--muted); }
+.carte-public { font-size: .8rem; color: var(--navy); margin-bottom: 1.25rem; }
+.carte-col.cache { display: none; }
+
+/* 7. MÉTHODE ------------------------------------------------------------ */
+.section-sable { background: #fff; }
+.etape { border-top: 1px solid var(--line); padding-top: 1.25rem; height: 100%; }
+.etape-num {
+  display: block; font-family: var(--font-title);
+  font-size: 2rem; color: var(--gold); margin-bottom: .75rem;
+}
+.etape-titre { font-family: var(--font-body); font-weight: 700; font-size: 1.05rem; }
+.etape-texte { font-size: .9rem; color: var(--muted); }
+
+/* 8. QUIZ --------------------------------------------------------------- */
+.quiz-carte {
+  background: #fff; border: 1px solid var(--line); border-radius: 6px;
+  padding: 2rem 1.75rem;
+}
+fieldset { border: 0; padding: 0; margin: 0; }
+.quiz-question { font-family: var(--font-body); font-weight: 700; font-size: 1.02rem; margin-bottom: 1.25rem; }
+.quiz-option {
+  display: flex; align-items: center; gap: .75rem;
+  border: 1px solid var(--line); border-radius: 4px;
+  padding: .85rem 1rem; margin-bottom: .75rem;
+  font-size: .93rem; cursor: pointer;
+  transition: border-color .15s, background-color .15s;
+}
+.quiz-option:hover { border-color: var(--navy); }
+.quiz-option:has(input:checked) { border-color: var(--navy); background: var(--cream); }
+.quiz-option .form-check-input { margin: 0; flex-shrink: 0; }
+.form-check-input:checked { background-color: var(--navy); border-color: var(--navy); }
+.quiz-retour { margin: 1rem 0 0; font-size: .93rem; min-height: 1.5rem; }
+.quiz-retour.ok { color: #1d6b3a; font-weight: 700; }
+.quiz-retour.ko { color: #9a3412; font-weight: 700; }
+
+/* 9. PIED DE PAGE ------------------------------------------------------- */
+.site-footer { background: #092b58; border-top: 1px solid var(--line); padding: 3rem 0; }
+.footer-titre { font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: .4rem; }
+.footer-texte { font-size: .85rem; color: var(--muted); max-width: 34rem; }
+
+/* Petits écrans */
+@media (max-width: 575.98px) {
+  .hero { padding-top: 2rem; }
+  .section { padding: 3rem 0; }
+  .une { box-shadow: 8px 8px 0 var(--sand); margin-right: 8px; margin-bottom: 8px; padding: 1.5rem 1.25rem; }
+  .quiz-carte { padding: 1.5rem 1.15rem; }
+  .btn-contour { width: 100%; text-align: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}

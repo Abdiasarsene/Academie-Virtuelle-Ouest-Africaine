@@ -1,0 +1,32 @@
+<section class="section" id="quiz">
+  <div class="container">
+    <div class="row gy-5 gx-lg-5 align-items-start">
+
+      <div class="col-lg-6">
+        <p class="eyebrow">{{ quiz.eyebrow }}</p>
+        <h2 class="section-title">{{ quiz.titre }}</h2>
+        <p class="section-intro mt-3">{{ quiz.texte }}</p>
+        <p class="mention">{{ quiz.mention }}</p>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="quiz-carte">
+          <p class="eyebrow">{{ quiz.carte_eyebrow }}</p>
+          <form id="quiz-form" novalidate>
+            <fieldset>
+              <legend class="quiz-question">{{ quiz.question }}</legend>
+              {% for o in quiz.options %}
+              <label class="quiz-option">
+                <input type="radio" name="reponse" value="{{ o.id }}" class="form-check-input">
+                <span>{{ o.label }}</span>
+              </label>
+              {% endfor %}
+            </fieldset>
+            <button type="submit" class="btn btn-lien px-0 mt-3">{{ quiz.bouton }}</button>
+            <p id="quiz-retour" class="quiz-retour" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

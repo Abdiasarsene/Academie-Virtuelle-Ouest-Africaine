@@ -1,0 +1,48 @@
+<section class="hero" id="accueil">
+  <div class="container">
+    <div class="row align-items-center gy-5 gx-lg-5">
+
+      <!-- Colonne gauche : message principal -->
+      <div class="col-lg-7">
+        <p class="eyebrow">{{ hero.eyebrow }}</p>
+        <h1 class="display-title">
+          {{ hero.titre_1 }}<br>
+          {{ hero.titre_2 }}<br>
+          <span class="text-gold">{{ hero.titre_accent }}</span>
+        </h1>
+        <p class="lead-text">{{ hero.texte }}</p>
+
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <a class="btn btn-lien" href="#{{ hero.cta_principal.ancre }}">{{ hero.cta_principal.label }}</a>
+          <a class="btn btn-contour" href="#{{ hero.cta_secondaire.ancre }}">{{ hero.cta_secondaire.label }}</a>
+        </div>
+        <p class="mention mt-4">{{ hero.mention }}</p>
+      </div>
+
+      <!-- Colonne droite : parcours à la une -->
+      <div class="col-lg-5">
+        <article class="une" id="parcours-une">
+          <p class="eyebrow">{{ parcours.eyebrow }}</p>
+          <h2 class="une-titre">{{ parcours.titre }}</h2>
+          <p class="une-texte">{{ parcours.texte }}</p>
+          <ol class="etapes-liste">
+            {% for etape in parcours.etapes %}
+            <li><span class="num">{{ '%02d' % loop.index }}</span>{{ etape }}</li>
+            {% endfor %}
+          </ol>
+          <a class="btn btn-lien px-0" href="#certificats">{{ parcours.cta }}</a>
+        </article>
+      </div>
+    </div>
+
+    <!-- Trois chiffres clés -->
+    <div class="row g-4 chiffres">
+      {% for c in hero.chiffres %}
+      <div class="col-md-4">
+        <p class="chiffre-titre">{{ c.titre }}</p>
+        <p class="chiffre-texte">{{ c.texte }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

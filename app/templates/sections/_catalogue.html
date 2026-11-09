@@ -1,0 +1,38 @@
+<section class="section" id="formations">
+  <div class="container">
+    <div class="row g-4 align-items-end mb-4">
+      <div class="col-lg-8">
+        <p class="eyebrow">{{ catalogue.eyebrow }}</p>
+        <h2 class="section-title">{{ catalogue.titre }}</h2>
+      </div>
+      <div class="col-lg-4">
+        <p class="section-intro">{{ catalogue.intro }}</p>
+      </div>
+    </div>
+
+    <!-- Filtres (gérés dans static/js/main.js) -->
+    <div class="filtres" role="group" aria-label="Filtrer les parcours">
+      {% for f in catalogue.filtres %}
+      <button type="button" class="filtre{{ ' actif' if loop.first }}"
+              data-filtre="{{ f.id }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ f.label }}</button>
+      {% endfor %}
+    </div>
+
+    <div class="row g-4" id="certificats">
+      {% for c in catalogue.certificats %}
+      <div class="col-md-6 col-lg-4 carte-col" data-categorie="{{ c.categorie }}">
+        <article class="carte">
+          <div class="carte-haut">
+            <span class="domaine">{{ c.domaine }}</span>
+            <span class="icone" aria-hidden="true">{{ c.icone }}</span>
+          </div>
+          <h3 class="carte-titre">{{ c.titre }}</h3>
+          <p class="carte-texte">{{ c.texte }}</p>
+          <p class="carte-public">{{ c.public }}</p>
+          <a class="btn btn-lien px-0 mt-auto" href="#parcours-une">{{ c.cta }}</a>
+        </article>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
